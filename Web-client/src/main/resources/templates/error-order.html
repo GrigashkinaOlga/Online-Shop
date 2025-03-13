@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ошибка при отмене заказа</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffe3e3; /* Мягкий розовый фон */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Центрирование по вертикали */
+            color: #593f3f; /* Темный текст для контраста */
+        }
+        .container {
+            background-color: #ffffff; /* Белый фон для контейнера */
+            border-radius: 15px; /* Более округленные углы */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Нежная тень */
+            padding: 40px;
+            max-width: 450px; /* Максимальная ширина контейнера */
+            text-align: center; /* Центрирование текста */
+            border: 1px solid #f2a6a6; /* Светло-розовая граница */
+        }
+        h1 {
+            margin-bottom: 25px; /* Отступ снизу */
+            color: #dc3545; /* Красный цвeт заголовка */
+            font-size: 1.8em; /* Увеличенный размер шрифта */
+            font-weight: bold; /* Жирный текст */
+        }
+        .error-message {
+            background-color: #f8d7da; /* Светло-красный фон для сообщения */
+            color: #721c24; /* Темный текст */
+            border: 1px solid #f5c6cb; /* Цвет границы */
+            border-radius: 10px; /* Закругленные углы */
+            padding: 20px;
+            margin: 20px 0; /* Отступы сверху и снизу */
+            font-size: 1.1em; /* Увеличенный размер текста для сообщения */
+        }
+        .button {
+            background-color: #ff6f61; /* Цвет кнопки - коралловый */
+            color: white; /* Белый текст на кнопке */
+            padding: 12px 25px; /* Увеличенные отступы кнопки */
+            border: none; /* Без границ */
+            border-radius: 25px; /* Округленные углы */
+            cursor: pointer; /* Указатель при наведении */
+            text-decoration: none; /* Без подчеркивания */
+            font-size: 18px; /* Увеличенный размер шрифта */
+            transition: background-color 0.3s, transform 0.2s; /* Эффект плавного перехода */
+        }
+        .button:hover {
+            background-color: #e63946; /* Более темный коралловый при наведении */
+            transform: translateY(-2px); /* Легкий подъем кнопки */
+        }
+        .icon {
+            width: 70px; /* Размер иконки */
+            margin-bottom: 30px; /* Отступ снизу */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="/images/error.png" alt="Warning Icon" class="icon" /> <!-- Замените на путь к вашей иконке -->
+    <h1>Ой, ошибка!</h1>
+
+    <div class="error-message">
+        <p th:text="${errorMessage}">Произошла ошибка</p>
+    </div>
+
+    <a th:href="@{/index}" class="button">Вернуться на главную</a>
+</div>
+</body>
+</html>

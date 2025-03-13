@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Успешное оформление заказа</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3e5f5; /* Мягкий розовый фон */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Центрирование по вертикали */
+            color: #333; /* Темный текст */
+        }
+        .container {
+            background-color: #fff; /* Белый фон для контейнера */
+            border-radius: 20px; /* Более округленные углы */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Нежная тень */
+            padding: 40px;
+            max-width: 450px; /* Максимальная ширина */
+            text-align: center; /* Центрирование текста */
+        }
+        h1 {
+            margin-bottom: 25px; /* Отступ снизу */
+            color: #6f42c1; /* Фиолетовый цвет заголовка */
+            font-size: 2em; /* Увеличенный размер шрифта */
+            font-weight: 600; /* Полужирный текст */
+        }
+        .success-message {
+            background-color: #d1e7dd; /* Светло-зеленый фон для сообщения */
+            color: #0f5132; /* Тёмный текст */
+            border: 1px solid #b9ebcb; /* Цвет границы */
+            border-radius: 8px; /* Закругленные углы */
+            padding: 25px;
+            margin: 20px 0; /* Отступы сверху и снизу */
+            font-size: 1.1em; /* Увеличенный размер текста */
+        }
+        .button {
+            background-color: #6f42c1; /* Фиолетовый цвет кнопки */
+            color: white; /* Белый текст на кнопке */
+            padding: 12px 25px; /* Увеличенные отступы кнопки */
+            border: none; /* Без границ */
+            border-radius: 25px; /* Овальные углы */
+            cursor: pointer; /* Указатель при наведении */
+            text-decoration: none; /* Без подчеркивания */
+            font-size: 18px; /* Увеличенный размер шрифта */
+            transition: background-color 0.3s ease, transform 0.2s; /* Плавный эффект при наведении */
+        }
+        .button:hover {
+            background-color: #5a239b; /* Темный фиолетовый при наведении */
+            transform: translateY(-2px); /* Эффект при поднятии кнопки */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Поздравляем!</h1>
+
+    <div class="success-message">
+        <p>Вы купили: <strong th:text="${productName}">Название товара</strong></p>
+        <p>Количество: <strong th:text="${quantity}">Количество</strong></p>
+        <p>Общая стоимость: <strong th:text="${totalCost}">Цена</strong></p>
+    </div>
+
+    <a th:href="@{/index}" class="button">Вернуться на главную</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Онлайн-магазин косметики</title>
+    <style>
+        /* Стили для заголовка */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px; /* Увеличил отступы для более просторного вида */
+            background: linear-gradient(45deg, #ff6f61, #de62ce); /* Яркий градиент для фона */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Более интенсивная тень для разделения хедера */
+            color: #fff;
+        }
+
+        /* Заголовок страницы */
+        .header .page-title {
+            font-size: 2em; /* Увеличенный размер заголовка */
+            font-weight: bold;
+            margin: 0;
+            color: #fff; /* Белый текст */
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Информация о пользователе */
+        .header .user-info {
+            display: flex;
+            align-items: center;
+            gap: 30px; /* Больший пробел между элементами */
+            font-size: 1em;
+        }
+
+        /* Выпадающий список */
+        .user-info select {
+            padding: 10px;
+            font-size: 1em;
+            background-color: #fff;
+            color: #333;
+            border: 2px solid #de62ce; /* Яркая рамка */
+            border-radius: 30px; /* Скругленные края */
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .user-info select:hover,
+        .user-info select:focus {
+            border-color: #ff6f61; /* Эффект при наведении */
+            background-color: #f9f9f9; /* Изменение фона на наведении */
+            outline: none;
+        }
+
+        /* Стили для сетки товаров */
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Увеличенный пробел между товарами */
+            justify-content: space-around; /* Центрирование товара */
+            padding: 20px; /* Отступы вокруг сетки */
+        }
+
+        .product-item {
+            flex: 1 1 calc(23% - 20px); /* Для адаптивного дизайна, составляет примерно 4 товара в строке */
+            box-sizing: border-box;
+            border: none; /* Убрана граница */
+            padding: 15px;
+            text-align: center;
+            background-color: #fff; /* Белый фон для элемента товара */
+            border-radius: 10px; /* Скругленные края */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для элемента */
+            transition: transform 0.2s, box-shadow 0.2s; /* Плавный эффект при наведении */
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px); /* Эффект поднятия при наведении */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Более интенсивная тень при наведении */
+        }
+
+.product-image-container {
+    width: 100%; /* Задает ширину на 100% контейнера */
+    height: 250px; /* Фиксированная высота для контейнера */
+    overflow: hidden; /* Скрытие переполнения */
+    display: flex; /* Включаем flexbox */
+    align-items: center; /* Центрируем по вертикали */
+    justify-content: center; /* Центрируем по горизонтали */
+    background-color: #ffffff; /* Цвет фона (опционально) */
+}
+
+.product-image {
+    max-width: 100%; /* Изображение не превышает ширину контейнера */
+    max-height: 100%; /* Изображение не превышает высоту контейнера */
+    height: auto; /* Высота предполагает пропорции */
+    display: block; /* Поддерживает поведение контейнеров */
+}
+
+        .product-title {
+            font-size: 1.3em;
+            margin: 10px 0;
+            font-weight: bold;
+            color: #333; /* Темный цвет заголовка */
+        }
+
+        .product-price {
+            color: #e91e63; /* Яркий розовый цвет для цены */
+            font-size: 1.2em;
+        }
+
+        .product-stock {
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        .quantity-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .quantity-controls button {
+            width: 35px;
+            height: 35px;
+            font-size: 1.3em;
+            background-color: #ff6f61; /* Яркий красный для кнопок */
+            color: #fff;
+            border: none;
+            border-radius: 50%; /* Круглые кнопки */
+            cursor: pointer;
+            margin: 0 5px; /* Пробел между кнопками */
+            transition: background-color 0.3s;
+        }
+
+        .quantity-controls button:hover {
+            background-color: #de62ce; /* Цвет при наведении */
+        }
+
+        .buy-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .buy-button:hover {
+            background-color: #0056b3; /* Более темный синий при наведении */
+        }
+
+        .product-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+            height: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Уменьшено до трех строк для описания */
+            -webkit-box-orient: vertical;
+        }
+
+               /* Адаптивные стили для разных экранов */
+@media (max-width: 992px) {
+    .product-item {
+        width: calc(50% - 10px); /* Два товара в строке */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-item {
+        width: 100%; /* Один товар в строке для мобильных устройств */
+    }
+}
+
+/* Стили для кнопок "Вход" и "Выход" */
+.login-button,
+.logout-button {
+    background-color: #ff6f61; /* Яркий коралловый цвет */
+    color: #fff;
+    padding: 8px 15px; /* Увеличенные отступы */
+    border: none;
+    border-radius: 25px; /* Скругленные края для кнопок */
+    text-decoration: none;
+    font-size: 1.1em; /* Больший шрифт */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Плавный переход цвета и эффекта */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Легкая тень */
+}
+
+.login-button:hover,
+.logout-button:hover {
+    background-color: #e55a3d; /* Более темный коралловый при наведении */
+    transform: translateY(-2px); /* Эффект поднятия при наведении */
+}
+
+/* Стили для корзины товаров */
+.cart {
+    margin-left: 25px; /* Увеличенный отступ */
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    color: #fff; /* Белый текст */
+}
+
+.cart-link {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Более широкий пробел между элементами */
+    transition: color 0.3s, transform 0.2s; /* Плавный переход цвета и эффекта */
+}
+
+.cart-link:hover {
+    color: #ffe53b; /* Желтый цвет при наведении */
+    transform: scale(1.1); /* Увеличение при наведении */
+}
+
+.cart-count {
+    background-color: #e55a3d; /* Ярко-красный цвет для счетчика */
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 50%; /* Круглый счетчик */
+    font-size: 1em; /* Увеличенный текст */
+    font-weight: bold;
+    margin-left: 5px;
+}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="page-title">Магазин для прекрасной тебя</div>
+    <div class="user-info">
+        <div th:if="${isAuthenticated}">
+            <span th:text="'Здравствуйте, ' + ${username} + '!'">Здравствуйте, Гость!</span>
+            <a th:href="@{/logout}" class="logout-button">Выйти</a>
+        </div>
+        <div th:if="${!isAuthenticated}">
+            <a th:href="@{/do-login}" class="login-button">Войти</a>
+        </div>
+        <form th:action="@{/set-category}" method="get" class="category-form">
+            <label for="category">Категории:</label>
+            <select id="category" name="category" onchange="this.form.submit()">
+                <option th:each="category : ${categories}"
+                        th:value="${category}"
+                        th:text="${category}"
+                        th:selected="${category == currentCategory}">
+                </option>
+            </select>
+        </form>
+        <div class="cart">
+            <a th:href="@{/cart}" class="cart-link">
+                <i class="fas fa-shopping-cart"></i> Корзина
+                <span class="cart-count" th:text="${cartItemCount}">0</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="product-grid">
+    <div th:each="product : ${products}" class="product-item" th:data-product-id="${product.id}" th:data-product-price="${product.price}">
+        <div class="product-image-container">
+            <img th:src="'data:image/jpeg;base64,' + ${product.imageBase64}" alt="Изображение продукта" class="product-image"/>
+        </div>
+        <div class="product-title" th:text="${product.name}">Название продукта</div>
+        <div class="product-description" th:text="${product.description}">Описание продукта...</div>
+        <div class="product-price" th:text="'₽' + ${product.price}">Цена</div>
+        <div class="product-stock" th:text="'В наличии: ' + ${product.stock}">Запас</div>
+        <form th:action="@{/add-to-cart}" method="post">
+            <input type="hidden" name="productId" th:value="${product.id}" />
+            <input type="hidden" name="name" th:value="${product.name}" />
+            <input type="hidden" name="price" th:value="${product.price}" />
+            <div class="quantity-controls">
+                <button type="button" onclick="decreaseQuantity(this)">-</button>
+                <input type="number" name="quantity" value="1" min="1" max="5" class="quantity-input" style="width: 50px; text-align: center;" />
+                <button type="button" onclick="increaseQuantity(this)">+</button>
+            </div>
+            <button type="submit" class="buy-button">Купить</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function increaseQuantity(button) {
+        const quantityInput = button.previousElementSibling;
+        let currentQuantity = parseInt(quantityInput.value);
+        const maxQuantity = parseInt(quantityInput.max);
+        if (currentQuantity < maxQuantity) {
+            quantityInput.value = currentQuantity + 1;
+        }
+    }
+
+    function decreaseQuantity(button) {
+        const quantityInput = button.nextElementSibling;
+        let currentQuantity = parseInt(quantityInput.value);
+        if (currentQuantity > 1) {
+            quantityInput.value = currentQuantity - 1;
+        }
+    }
+</script>
+
+</body>
+</html>
+
