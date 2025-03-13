@@ -50,10 +50,8 @@ public class Order {
         item.setOrder(null);
     }
 
-
     /**
      * Порождающий паттерн Builder.
-     * И почему в Java нет #define? Сколько работы можно было сократить...
      */
     public static Builder builder() {
         return new Builder();
@@ -83,10 +81,7 @@ public class Order {
         }
 
         public Builder paymentMethod(String paymentMethod) {
-            // дальше проверится
-//            if (paymentMethod == null || paymentMethod.isBlank()) {
-//                throw new IllegalArgumentException("Неверный метод оплаты");
-//            }
+
             order.paymentMethod = paymentMethod;
             return this;
         }

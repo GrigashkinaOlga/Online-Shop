@@ -5,7 +5,7 @@ import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.stereotype.Service;
 
 /**
- * Рассылка сообщений всем "подписчикам"
+ * Рассылка сообщений всем пользователям
  */
 @Service
 @AllArgsConstructor

@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 public class PaymentService {
 
     PaymentStrategyRegistry paymentStrategyRegistry;
-//    PaymentRepository paymentRepository;
-//    UserRepository userRepository;
 
     PaymentManager paymentManager;
 
@@ -31,15 +29,6 @@ public class PaymentService {
         );
         System.out.println("  -- transfer context: " + context);
         paymentManager.excecute(context);
-//        // настраиваем последовательность действий
-//        OrchestratorPayment<PaymentContext> orchestrator = new OrchestratorPayment<>();
-//        orchestrator.addStep(new CreateTransferStep(paymentRepository));
-//        orchestrator.addStep(new CheckBalanceStep(paymentRepository, userRepository));
-//        orchestrator.addStep(new CheckMethodStep());
-//        orchestrator.addStep(new PaymentExecutionStep());
-//        orchestrator.addStep(new PaymentApprovedStep(paymentRepository));
-//        // выполняем
-//        orchestrator.execute(context);
         return true;
     }
 

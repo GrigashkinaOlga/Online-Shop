@@ -46,15 +46,6 @@ public class AuthCart implements Cart {
         return items.stream().map(item -> new CartItem(item.getUserId(), item.getProductId(), item.getQuantity())).toList();
     }
 
-//    @Override
-//    public int getQuantity(String productId) {
-//        List<CartItem> cart = getItems();
-//        return cart.stream()
-//                .filter(cartItem -> cartItem.getProductId().equals(productId))
-//                .findFirst()
-//                .orElse(new CartItem()).getQuantity();
-//    }
-
     @Override
     public int getQuantity() {
         List<CartItem> cart = getItems();

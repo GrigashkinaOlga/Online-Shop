@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients(basePackages = "mr.demonid.service.payment.links")
+@EnableFeignClients(basePackages = "ru.geekbrains.service.payment.links")
 public class ServicePaymentApplication {
 
     public static void main(String[] args) {

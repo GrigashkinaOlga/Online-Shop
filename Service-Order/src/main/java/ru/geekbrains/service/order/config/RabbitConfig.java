@@ -26,7 +26,7 @@ public class RabbitConfig {
      */
     @Bean
     public FanoutExchange springCloudBusExample() {
-        return new FanoutExchange("springCloudBusPK8000");
+        return new FanoutExchange("springCloudBusПК8000");
     }
 
     /**
@@ -34,7 +34,7 @@ public class RabbitConfig {
      */
     @Bean
     public Queue springCloudBusQueue() {
-        return new Queue("springCloudBusQueuePK8000");
+        return new Queue("springCloudBusQueueПК8000");
     }
 
     /**

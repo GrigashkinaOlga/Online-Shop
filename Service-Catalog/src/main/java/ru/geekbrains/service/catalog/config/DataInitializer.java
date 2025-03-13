@@ -18,9 +18,6 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-//        categoryService.createCategory("Logic");
-//        categoryService.createCategory("Action");
-//        categoryService.createCategory("Race");
-//        categoryService.createCategory("Other");
+
     }
 }
