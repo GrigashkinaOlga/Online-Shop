@@ -5,7 +5,7 @@ spring:
   application:
     name: "WEB-CLIENT"
 
-# Cloud Bus + RabbitMQ
+  # Cloud Bus + RabbitMQ
   cloud:
     bus:
       enabled: true

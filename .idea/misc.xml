@@ -23,6 +23,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/Gateway-server/pom.xml" />
         <option value="$PROJECT_DIR$/Produce-service/pom.xml" />
         <option value="$PROJECT_DIR$/untitled/pom.xml" />
       </set>

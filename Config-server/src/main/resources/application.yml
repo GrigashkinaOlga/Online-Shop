@@ -1,0 +1,14 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: "Config-Cloud-Server"
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/GrigashkinaOlga/DiplomConfig.git
+          default-label: main
+          clone-on-start: true
+

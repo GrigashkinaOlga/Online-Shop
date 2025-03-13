@@ -12,13 +12,13 @@
         <module name="service-cart" />
         <module name="web-client" />
         <module name="auth-server" />
-        <module name="gateway-server" />
         <module name="service-order" />
         <module name="eureka-server" />
         <module name="service-payment" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="gateway-server" target="17" />
       <module name="payment-service" target="17" />
       <module name="service-payment (1)" target="17" />
       <module name="untitled" target="21" />

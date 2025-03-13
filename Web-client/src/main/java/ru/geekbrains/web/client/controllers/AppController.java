@@ -4,10 +4,7 @@ import feign.FeignException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
-import ru.geekbrains.web.client.dto.CartItem;
-import ru.geekbrains.web.client.dto.OrderRequest;
-import ru.geekbrains.web.client.dto.ProductInfo;
-import ru.geekbrains.web.client.dto.StrategyInfo;
+import ru.geekbrains.web.client.dto.*;
 import ru.geekbrains.web.client.service.CartService;
 import ru.geekbrains.web.client.service.CatalogService;
 import ru.geekbrains.web.client.service.OrderService;
@@ -117,8 +114,6 @@ public class AppController {
     /**
      * Переход на страницу корзины товаров.
      * Только для авторизированных пользователей.
-     * Хотя никто не мешает авторизировать пользователя и попозже, когда
-     * нажмет кнопку оплаты. Но мне так захотелось.
      */
     @GetMapping("cart")
     public String placeOrder(Model model) {
