@@ -27,7 +27,6 @@ import static org.springframework.security.oauth2.core.ClientAuthenticationMetho
 
 /**
  * Конфигурация сервера авторизации
- *
  * http://localhost:8090/.well-known/openid-configuration
  */
 @Configuration

@@ -42,12 +42,3 @@ spring:
   sql:
     init:
       mode: always                                  # всегда
-
-
-
-#logging:
-#  level:
-#    org.springframework.security.oauth2: DEBUG
-#    org.springframework.security: DEBUG
-#    org.springframework.web: DEBUG
-#    org.springframework.security.jwt: DEBUG
